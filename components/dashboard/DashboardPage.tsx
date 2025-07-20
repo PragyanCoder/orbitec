@@ -1,5 +1,6 @@
 import React from 'react';
 import { Plus, Rocket, Activity, CreditCard } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '../ui/Button';
 import { Card, CardContent } from '../ui/Card';
 
@@ -23,10 +24,12 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
           </h1>
           <p className="text-gray-600">Manage your applications and deployments</p>
         </div>
-        <Button>
-          <Plus className="h-4 w-4 mr-2" />
-          New Application
-        </Button>
+        <Link href="/dashboard/applications/new">
+          <Button>
+            <Plus className="h-4 w-4 mr-2" />
+            New Application
+          </Button>
+        </Link>
       </div>
 
       {/* Stats Cards */}
@@ -79,18 +82,24 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
         <CardContent>
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button variant="secondary" className="justify-start">
-              <Plus className="h-4 w-4 mr-2" />
-              Deploy New App
-            </Button>
-            <Button variant="secondary" className="justify-start">
-              <CreditCard className="h-4 w-4 mr-2" />
-              Add Credits
-            </Button>
-            <Button variant="secondary" className="justify-start">
-              <Activity className="h-4 w-4 mr-2" />
-              View Logs
-            </Button>
+            <Link href="/dashboard/applications/new">
+              <Button variant="secondary" className="justify-start">
+                <Plus className="h-4 w-4 mr-2" />
+                Deploy New App
+              </Button>
+            </Link>
+            <Link href="/dashboard/billing">
+              <Button variant="secondary" className="justify-start">
+                <CreditCard className="h-4 w-4 mr-2" />
+                Add Credits
+              </Button>
+            </Link>
+            <Link href="/dashboard/deployments">
+              <Button variant="secondary" className="justify-start">
+                <Activity className="h-4 w-4 mr-2" />
+                View Logs
+              </Button>
+            </Link>
           </div>
         </CardContent>
       </Card>
@@ -108,4 +117,5 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
       </Card>
     </div>
   );
+'use client';
 };

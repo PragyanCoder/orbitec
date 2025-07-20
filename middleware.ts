@@ -5,11 +5,6 @@ export default authMiddleware({
     "/",
     "/pricing", 
     "/contact",
-    "/docs",
-    "/privacy",
-    "/terms",
-    "/legal",
-    "/sitemap",
     "/api/webhooks/stripe"
   ],
   ignoredRoutes: ["/api/webhooks/stripe"]

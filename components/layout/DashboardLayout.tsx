@@ -117,4 +117,5 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, user
       </div>
     </div>
   );
+'use client';
 };
