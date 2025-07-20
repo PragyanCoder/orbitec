@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: orbit-technology
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+        fromDatabase:
+          name: clerk_publishable_key
+          property: connectionString
+      - key: CLERK_SECRET_KEY
+        fromDatabase:
+          name: clerk_secret_key
+          property: connectionString
+      - key: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+        fromDatabase:
+          name: stripe_publishable_key
+          property: connectionString
+      - key: STRIPE_SECRET_KEY
+        fromDatabase:
+          name: stripe_secret_key
+          property: connectionString
