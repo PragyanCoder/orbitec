@@ -1,5 +1,6 @@
 const express = require('express');
 const { getDatabase } = require('../database/init');
+const { sanitizeUserData } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -16,8 +17,11 @@ router.get('/profile', (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
+    
+    // Security: Remove sensitive data before sending to client
+    const sanitizedUser = sanitizeUserData(user);
 
-    res.json(user);
+    res.json(sanitizedUser);
   } catch (error) {
     console.error('Get profile error:', error);
     res.status(500).json({ error: 'Failed to fetch profile' });

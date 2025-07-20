@@ -17,14 +17,46 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     
-    // TODO: Implement actual form submission
-    console.log('Contact form submitted:', formData);
+    try {
+      // Send message to Telegram
+      const telegramMessage = `
+🔔 New Contact Form Submission
+
+👤 Name: ${formData.name}
+📧 Email: ${formData.email}
+📝 Subject: ${formData.subject}
+
+💬 Message:
+${formData.message}
+
+🕒 Time: ${new Date().toLocaleString()}
+      `;
+
+      const telegramResponse = await fetch(`https://api.telegram.org/bot7598441160:AAEsue03Xh7RpYd2x8mLM1EErSIBGx_WPNc/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: '-1002128348085',
+          text: telegramMessage,
+          parse_mode: 'HTML'
+        })
+      });
+
+      if (telegramResponse.ok) {
+        // Clear form and show success
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        alert('Message sent successfully! We\'ll get back to you soon.');
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again or contact us directly.');
+    }
     
-    setTimeout(() => {
-      setLoading(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      // Show success message
-    }, 2000);
+    setLoading(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

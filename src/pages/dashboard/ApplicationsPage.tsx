@@ -27,7 +27,7 @@ export const ApplicationsPage: React.FC = () => {
       name: 'my-blog',
       status: 'running',
       repoUrl: 'https://github.com/user/my-blog',
-      subdomain: 'my-blog.orbit.tech',
+      subdomain: 'my-blog.orbittechnology.tech',
       lastDeployment: '2 hours ago',
       createdAt: '2024-01-15',
       envVars: { NODE_ENV: 'production', API_URL: 'https://api.example.com' }
@@ -37,7 +37,7 @@ export const ApplicationsPage: React.FC = () => {
       name: 'portfolio-site',
       status: 'building',
       repoUrl: 'https://github.com/user/portfolio',
-      subdomain: 'portfolio-site.orbit.tech',
+      subdomain: 'portfolio-site.orbittechnology.tech',
       lastDeployment: '5 minutes ago',
       createdAt: '2024-01-10',
       envVars: { NODE_ENV: 'production' }
@@ -47,7 +47,7 @@ export const ApplicationsPage: React.FC = () => {
       name: 'api-service',
       status: 'stopped',
       repoUrl: 'https://github.com/user/api-service',
-      subdomain: 'api-service.orbit.tech',
+      subdomain: 'api-service.orbittechnology.tech',
       lastDeployment: '1 day ago',
       createdAt: '2024-01-05',
       envVars: { NODE_ENV: 'production', DATABASE_URL: 'postgresql://...' }
@@ -57,7 +57,7 @@ export const ApplicationsPage: React.FC = () => {
       name: 'e-commerce-app',
       status: 'failed',
       repoUrl: 'https://github.com/user/ecommerce',
-      subdomain: 'ecommerce.orbit.tech',
+      subdomain: 'ecommerce.orbittechnology.tech',
       lastDeployment: '3 hours ago',
       createdAt: '2024-01-01',
       envVars: { NODE_ENV: 'production', STRIPE_KEY: 'sk_...' }

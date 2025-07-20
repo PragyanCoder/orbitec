@@ -9,6 +9,22 @@ const router = express.Router();
 // Apply admin middleware to all routes
 router.use(requireAdmin);
 
+// Security: Remove sensitive environment variables from responses
+const sanitizeEnvVars = (envVars) => {
+  const sensitive = ['PASSWORD', 'SECRET', 'KEY', 'TOKEN', 'DATABASE_URL', 'STRIPE', 'CLERK'];
+  const sanitized = {};
+  
+  Object.keys(envVars).forEach(key => {
+    if (sensitive.some(s => key.toUpperCase().includes(s))) {
+      sanitized[key] = '***HIDDEN***';
+    } else {
+      sanitized[key] = envVars[key];
+    }
+  });
+  
+  return sanitized;
+};
+
 // Get dashboard stats
 router.get('/stats', (req, res) => {
   try {

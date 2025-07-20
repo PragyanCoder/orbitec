@@ -152,8 +152,8 @@ export const SitemapPage: React.FC = () => {
                 <h3 className="font-medium text-gray-900 mb-2">Contact Information</h3>
                 <div className="text-gray-600 space-y-1">
                   <p>📧 admin@orbittechnology.tech</p>
-                  <p>📞 +1 (555) 123-4567</p>
-                  <p>🏢 San Francisco, CA</p>
+                  <p>📞 +91 9519253125</p>
+                  <p>🏢 Puducherry, India</p>
                   <p>🕒 24/7 Support Available</p>
                 </div>
               </div>

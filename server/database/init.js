@@ -194,6 +194,8 @@ function createAdminUser() {
     `).run(adminId, adminEmail, 'Pragyan', 'Pandey', 'admin', 10000);
     
     console.log(`✅ Admin user created: ${adminEmail}`);
+  } else {
+    console.log(`✅ Admin user already exists: ${adminEmail}`);
   }
 }
 

@@ -44,6 +44,14 @@ router.get('/:id', (req, res) => {
 
     // Parse envVars JSON
     application.envVars = JSON.parse(application.envVars || '{}');
+    
+    // Security: Hide sensitive environment variables from users
+    const sensitive = ['PASSWORD', 'SECRET', 'KEY', 'TOKEN', 'DATABASE_URL', 'STRIPE', 'CLERK'];
+    Object.keys(application.envVars).forEach(key => {
+      if (sensitive.some(s => key.toUpperCase().includes(s))) {
+        application.envVars[key] = '***HIDDEN***';
+      }
+    });
 
     res.json(application);
   } catch (error) {

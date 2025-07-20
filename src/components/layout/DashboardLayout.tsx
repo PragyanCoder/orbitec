@@ -50,7 +50,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, user
           <div className="p-6">
             <Link to="/" className="flex items-center space-x-2">
               <Rocket className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Orbit</span>
+              <span className="text-xl font-bold text-gray-900">Orbit Technology</span>
             </Link>
           </div>
 

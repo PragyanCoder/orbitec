@@ -29,21 +29,21 @@ export const DashboardPage: React.FC = () => {
       name: 'my-blog',
       status: 'running',
       lastDeployment: '2 hours ago',
-      url: 'my-blog.orbit.tech'
+      url: 'my-blog.orbittechnology.tech'
     },
     {
       id: '2',
       name: 'portfolio-site',
       status: 'building',
       lastDeployment: '5 minutes ago',
-      url: 'portfolio-site.orbit.tech'
+      url: 'portfolio-site.orbittechnology.tech'
     },
     {
       id: '3',
       name: 'api-service',
       status: 'stopped',
       lastDeployment: '1 day ago',
-      url: 'api-service.orbit.tech'
+      url: 'api-service.orbittechnology.tech'
     }
   ];
 

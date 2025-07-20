@@ -244,7 +244,7 @@ export const NewApplicationPage: React.FC = () => {
                 <p><strong>Repository:</strong> {formData.repoUrl}</p>
                 <p><strong>Branch:</strong> {formData.branch}</p>
                 <p><strong>Environment Variables:</strong> {Object.keys(formData.envVars).length} configured</p>
-                <p><strong>Subdomain:</strong> {formData.name}.orbit.tech</p>
+                <p><strong>Subdomain:</strong> {formData.name}.orbittechnology.tech</p>
               </div>
             </div>
 

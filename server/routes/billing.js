@@ -176,7 +176,7 @@ router.post('/purchase-credits', async (req, res) => {
       customer: user.stripeCustomerId,
       payment_method: defaultPaymentMethod.stripePaymentMethodId,
       confirm: true,
-      return_url: `https://${process.env.DOMAIN}/dashboard/billing`,
+      return_url: 'https://orbittechnology.tech/dashboard/billing',
       metadata: {
         userId: user.id,
         type: 'credit_purchase'

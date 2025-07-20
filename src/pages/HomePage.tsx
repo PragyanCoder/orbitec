@@ -225,7 +225,6 @@ export const HomePage: React.FC = () => {
                       <Button 
                         className="w-full" 
                         variant={plan.popular ? 'primary' : 'secondary'}
-                        onClick={() => alert('Documentation coming soon!')}
                       >
                         Get Started
                       </Button>

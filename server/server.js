@@ -48,7 +48,7 @@ app.use('/api/', limiter);
 // CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? [`https://${process.env.DOMAIN}`, `https://www.${process.env.DOMAIN}`]
+    ? ['https://orbittechnology.tech', 'https://www.orbittechnology.tech']
     : "http://localhost:5173",
   credentials: true
 }));
@@ -111,7 +111,7 @@ const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`🚀 Orbit Technology API Server running on port ${PORT}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV}`);
-  console.log(`🔗 Domain: ${process.env.DOMAIN}`);
+  console.log(`🔗 Domain: orbittechnology.tech`);
 });
 
 module.exports = { app, server, io };

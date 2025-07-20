@@ -28,7 +28,7 @@ export const DeploymentsPage: React.FC = () => {
         id: '1',
         applicationId: 'app1',
         applicationName: 'my-blog',
-        subdomain: 'my-blog.orbit.tech',
+        subdomain: 'my-blog.orbittechnology.tech',
         status: 'success',
         logs: [
           '[2024-01-15 10:30:00] Starting deployment...',
@@ -44,7 +44,7 @@ export const DeploymentsPage: React.FC = () => {
         id: '2',
         applicationId: 'app2',
         applicationName: 'portfolio-site',
-        subdomain: 'portfolio-site.orbit.tech',
+        subdomain: 'portfolio-site.orbittechnology.tech',
         status: 'building',
         logs: [
           '[2024-01-15 11:00:00] Starting deployment...',
@@ -57,7 +57,7 @@ export const DeploymentsPage: React.FC = () => {
         id: '3',
         applicationId: 'app3',
         applicationName: 'api-service',
-        subdomain: 'api-service.orbit.tech',
+        subdomain: 'api-service.orbittechnology.tech',
         status: 'failed',
         logs: [
           '[2024-01-15 09:15:00] Starting deployment...',

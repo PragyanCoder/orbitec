@@ -56,10 +56,23 @@ const requireAdmin = (req, res, next) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({ error: 'Admin access required' });
   }
+  
+  // Additional security: Log admin access attempts
+  console.log(`Admin access: ${req.user.email} accessing ${req.path} from ${req.ip}`);
+  
   next();
+};
+
+// Security middleware to prevent access to sensitive data
+const sanitizeUserData = (user) => {
+  const sanitized = { ...user };
+  delete sanitized.stripeCustomerId;
+  delete sanitized.suspended;
+  return sanitized;
 };
 
 module.exports = {
   authenticateToken,
-  requireAdmin
+  requireAdmin,
+  sanitizeUserData
 };

@@ -154,7 +154,7 @@ export const DomainsPage: React.FC = () => {
                 After adding your domain, you'll need to configure your DNS settings:
               </p>
               <div className="text-sm text-blue-800 space-y-1">
-                <p>• Add a CNAME record pointing to: <code className="bg-blue-100 px-1 rounded">orbit.tech</code></p>
+                <p>• Add a CNAME record pointing to: <code className="bg-blue-100 px-1 rounded">orbittechnology.tech</code></p>
                 <p>• Or add an A record pointing to: <code className="bg-blue-100 px-1 rounded">192.168.1.100</code></p>
               </div>
             </div>
@@ -285,7 +285,7 @@ export const DomainsPage: React.FC = () => {
               <div className="bg-gray-50 rounded-lg p-3 text-sm">
                 <p><strong>Type:</strong> CNAME</p>
                 <p><strong>Name:</strong> @ (or your subdomain)</p>
-                <p><strong>Value:</strong> orbit.tech</p>
+                <p><strong>Value:</strong> orbittechnology.tech</p>
               </div>
             </div>
             
