@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -28,7 +30,7 @@ interface DashboardLayoutProps {
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, user }) => {
   const pathname = usePathname();
-  const { signOut } = useClerk();
+  const { signOut, loaded } = useClerk();
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -43,8 +45,18 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, user
   }
 
   const handleSignOut = () => {
-    signOut();
+    signOut(() => {
+      window.location.href = '/';
+    });
   };
+
+  if (!loaded) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -117,5 +129,4 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, user
       </div>
     </div>
   );
-'use client';
 };

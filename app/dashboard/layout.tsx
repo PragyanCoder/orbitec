@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 
@@ -7,22 +7,22 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await currentUser();
+  const { userId } = auth();
 
-  if (!user) {
+  if (!userId) {
     redirect("/sign-in");
   }
 
-  const transformedUser = {
-    id: user.id,
-    firstName: user.firstName || '',
-    lastName: user.lastName || '',
-    email: user.emailAddresses[0]?.emailAddress || '',
-    role: user.emailAddresses[0]?.emailAddress === 'pragyanpandey0106@gmail.com' ? 'admin' : 'user'
+  const user = {
+    id: userId,
+    firstName: 'User',
+    lastName: '',
+    email: 'user@example.com',
+    role: 'user'
   };
 
   return (
-    <DashboardLayout user={transformedUser}>
+    <DashboardLayout user={user}>
       {children}
     </DashboardLayout>
   );

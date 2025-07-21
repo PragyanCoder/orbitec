@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Rocket, User, LogOut } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { useClerk } from '@clerk/nextjs';
+import { useClerk, useUser } from '@clerk/nextjs';
 
 interface HeaderProps {
   user?: {
@@ -17,11 +17,23 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ user }) => {
-  const { signOut } = useClerk();
+  const { signOut, loaded } = useClerk();
+  const { user: clerkUser } = useUser();
 
   const handleSignOut = () => {
-    signOut();
+    signOut(() => {
+      window.location.href = '/';
+    });
   };
+
+  // Use Clerk user if available and no user prop passed
+  const displayUser = user || (clerkUser ? {
+    id: clerkUser.id,
+    firstName: clerkUser.firstName || 'User',
+    lastName: clerkUser.lastName || '',
+    email: clerkUser.emailAddresses[0]?.emailAddress || 'user@example.com',
+    role: 'user'
+  } : null);
 
   return (
     <header className="bg-white border-b border-gray-200">
@@ -44,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            {user ? (
+            {loaded && displayUser ? (
               <div className="flex items-center space-x-4">
                 <Link href="/dashboard">
                   <Button variant="ghost" size="sm">
@@ -53,13 +65,13 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
                 </Link>
                 <div className="flex items-center space-x-2">
                   <User className="h-5 w-5 text-gray-400" />
-                  <span className="text-sm text-gray-700">{user.firstName}</span>
+                  <span className="text-sm text-gray-700">{displayUser.firstName}</span>
                 </div>
                 <Button variant="ghost" size="sm" onClick={handleSignOut}>
                   <LogOut className="h-4 w-4" />
                 </Button>
               </div>
-            ) : (
+            ) : loaded ? (
               <div className="flex items-center space-x-4">
                 <Link href="/sign-in">
                   <Button variant="ghost">Sign In</Button>
@@ -67,6 +79,11 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
                 <Link href="/sign-up">
                   <Button>Get Started</Button>
                 </Link>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <div className="w-20 h-8 bg-gray-200 rounded animate-pulse"></div>
+                <div className="w-24 h-8 bg-gray-200 rounded animate-pulse"></div>
               </div>
             )}
           </div>

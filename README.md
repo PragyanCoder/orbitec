@@ -92,14 +92,17 @@ npm run dev:server   # Backend
 ## Environment Variables
 
 ### Required
-- `ADMIN_EMAIL`: Email address for the admin user
-- `STRIPE_SECRET_KEY`: Stripe secret key for payments
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: Clerk publishable key for authentication
 - `CLERK_SECRET_KEY`: Clerk secret key for authentication
+- `STRIPE_SECRET_KEY`: Stripe secret key for payments (optional)
+- `ADMIN_EMAIL`: Email address for the admin user (optional)
 
 ### Optional
 - `PORT`: Server port (default: 3001)
 - `NODE_ENV`: Environment (development/production)
 - `DOMAIN`: Custom domain (default: orbittechnology.tech)
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Stripe publishable key
+- `STRIPE_WEBHOOK_SECRET`: Stripe webhook secret
 
 ## Security Features
 
